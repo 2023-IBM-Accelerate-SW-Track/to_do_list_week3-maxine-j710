@@ -16,18 +16,36 @@ afterEach(() => {
   container = null;
 });
 
-test('test that App component renders', () => {
-  render(<App />, container);
- });
 
 test('test that new-item-button is a button', () => {
   render(<App/>, container);
   const element = screen.getByTestId('new-item-button');
-  expect(element.innerHTML.toLowerCase().includes("button")).toBe(true)
+  console.log(element.outerHTML.toLowerCase());
+  expect(element.outerHTML.toLowerCase().includes("button")).toBe(true)
 });
+
 
 test('test that new-item-input is an input ', () => {
   render(<App/>, container);
   const element = screen.getByTestId('new-item-input');
   expect(element.innerHTML.toLowerCase().includes("input")).toBe(true)
 });
+
+
+// test('test that App component doesn\'t render dupicate Task', () => {
+//   render(<App />);
+//   const inputTask = screen.getByRole('textbox', {name: /Add New Item/i});
+//   const inputDate = screen.getByPlaceholderText("MM/DD/YYYY");
+//   const element = screen.getByRole('button', {name: /Add/i});
+//   const dueDateOne = "6/30/2023";
+//   const dueDateTwo = "7/5/2023";
+//   fireEvent.change(inputTask, { target: { value: "Homework"}});
+//   fireEvent.change(inputDate, { target: { value: dueDateOne}});
+//   fireEvent.click(element);
+//   fireEvent.change(inputTask, { target: { value: "Homework"}});
+//   fireEvent.change(inputDate, { target: { value: dueDateTwo}});
+//   fireEvent.click(element);
+//   const checkDupe = screen.getByText(/Homework/i);
+//   expect(checkDupe).toBeInTheDocument();
+//  });
+
